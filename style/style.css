@@ -1,0 +1,134 @@
+.header-container {
+    width:100%;
+    height:15vh;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    border-bottom: 1px solid #DDD;
+    position: fixed;
+}
+
+.authenticated-only-nav-buttons-container {
+    width: 45%;
+    height: 10vh;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+}
+
+.my-pins-container {
+    width: 50%;
+    height: 10vh;
+}
+
+.pinit-button {
+    font-family : Gabriola;
+    font-size: 2vw;
+}
+
+.pinit-button-text-left {
+    color: #e52227;
+}
+
+.my-pins-button {
+    height: 10vh;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-pack: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.saved-pins-container {
+    width: 50%;
+    height: 10vh;
+}
+
+.saved-pins-button {
+    height: 10vh;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-pack: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.logo-container {
+    width: 10%;
+    height:15vh;
+}
+
+.logo {
+    width: 100%;
+    height:15vh;
+}
+
+.logo-image {
+    width: 100%;
+    height:15vh;
+}
+
+.add-pin-and-auth-button-container {
+    width: 45%;
+    height: 10vh;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+}
+
+.add-pin-container {
+    width: 70%;
+    height: 10vh;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-pack: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.add-pin {
+    width: 60%;
+}
+
+.add-pin .input-group-addon {
+    background-color: #e52227;
+    color: white;
+    font-family : Gabriola;
+}
+
+.auth-button-container {
+    width: 30%;
+    height: 10vh;
+}
+
+.auth-button {
+    height: 10vh;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-pack: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+
+
+
+.pinit-pic1 {
+    width:100%;
+}
