@@ -110,7 +110,7 @@
 }
 
 .add-pin-text-right {
-    color: black;
+    color: black !important;
 }
 
 .auth-button-container {
@@ -131,8 +131,18 @@
     align-items: center;
 }
 
+.auth-button span {
+    cursor: pointer;
+}
 
+.auth-button a {
+    color: black;
+}
 
+.auth-button a:hover {
+    text-decoration: none;
+    color: black;
+}
 
 .pinit-pic1 {
     width:100%;

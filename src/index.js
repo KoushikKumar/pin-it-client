@@ -18,7 +18,7 @@ const tokenData = JSON.parse(localStorage.getItem(PIN_IT_TOKEN_KEY));
 if(tokenData) {
   axios.get(`${TEST_AUTHORIZATION_URI}?${OAUTH_TOKEN}=${tokenData[OAUTH_TOKEN]}&${OAUTH_TOKEN_SECRET}=${tokenData[OAUTH_TOKEN_SECRET]}`)
        .then(response => {
-         if(response.data.IS_AUTHORIZED) {
+         if(response.data[IS_AUTHORIZED]) {
            store.dispatch({type:IS_USER_AUTHENTICATED, payload:true})
          }
          renderDOM();
