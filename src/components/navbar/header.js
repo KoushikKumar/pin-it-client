@@ -1,50 +1,54 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export default class Header extends Component {
+import MyPinsButton from './my-pins-button';
+import SavedPinsButton from './saved-pins-button';
+import Logo from './logo';
+import AddPinSearchBox from './add-pin-search-box';
+import AuthButton from './auth-button';
+
+class Header extends Component {
 
     renderAuthenticatedOnlyNavButtons() {
         return (
             <div className="authenticated-only-nav-buttons-container">
-                <div className="my-pins-container">
-                    <div className="pinit-button my-pins-button">
-                        <span className="pinit-button-text-left">My</span><span>Pins</span>
-                    </div>
-                </div>
-                <div className="saved-pins-container">
-                    <div className="pinit-button saved-pins-button">
-                        <span className="pinit-button-text-left">Saved</span><span>Pins</span>
-                    </div>
-                </div>
+                {this.renderMyPinsButton()}
+                {this.renderSavedPinsButton()}
             </div>
         );
     }
 
+    renderMyPinsButton() {
+        if(this.props.isUserAuthenticated) {
+            return <MyPinsButton />;
+        }
+    }
+
+    renderSavedPinsButton() {
+        if(this.props.isUserAuthenticated) {
+            return <SavedPinsButton />;
+        }
+    }
+
     renderLogo() {
-        return (
-            <div className="logo-container">
-                <div className="logo">
-                    <img className="logo-image" src="http://res.cloudinary.com/koushik/image/upload/v1492875656/pinit-logo_t1iva1.jpg" />
-                </div>
-            </div>
-        );
+        return <Logo />;
     }
 
     renderAddPinAndAuthButton() {
         return (
             <div className="add-pin-and-auth-button-container">
                 <div className="add-pin-container">
-                    <div className="input-group add-pin">
-                        <input type="text" className="form-control" placeholder="Add Pin" aria-describedby="basic-addon2" />
-                        <span className="input-group-addon" id="basic-addon2">ADD</span>
-                    </div>
+                    {this.renderAddPinSearchBox()}
                 </div>
-                <div className="auth-button-container">
-                    <div className="pinit-button auth-button">
-                        <span className="pinit-button-text-left">Log</span><span>Out</span>
-                    </div>
-                </div>
+                <AuthButton />
             </div>
         );
+    }
+
+    renderAddPinSearchBox() {
+        if(this.props.isUserAuthenticated) {
+            return <AddPinSearchBox />;
+        }
     }
 
     render() {
@@ -58,3 +62,11 @@ export default class Header extends Component {
         
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        isUserAuthenticated: state.auth.isUserAuthenticated
+    }
+}
+
+export default connect(mapStateToProps)(Header);
