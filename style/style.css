@@ -4,16 +4,18 @@
     display: -ms-flexbox;
     display: -webkit-box;
     display: flex;
-    border-bottom: 1px solid #DDD;
     position: fixed;
+    z-index: 20;
 }
 
 .authenticated-only-nav-buttons-container {
     width: 45%;
-    height: 10vh;
+    height: 15vh;
     display: -ms-flexbox;
     display: -webkit-box;
     display: flex;
+    background-color: white;
+    border-bottom: 1px solid #DDD;
 }
 
 .my-pins-container {
@@ -78,10 +80,12 @@
 
 .add-pin-and-auth-button-container {
     width: 45%;
-    height: 10vh;
+    height: 15vh;
     display: -ms-flexbox;
     display: -webkit-box;
     display: flex;
+    background-color: white;
+    border-bottom: 1px solid #DDD;
 }
 
 .add-pin-container {
