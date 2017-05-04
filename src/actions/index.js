@@ -25,15 +25,13 @@ export function logOut() {
         localStorage.removeItem(PIN_IT_TOKEN_KEY);
         dispatch({ type:IS_USER_AUTHENTICATED, payload:false });
         dispatch({ type:USER_DATA, payload: null });
+        dispatchAllImagesData(dispatch);
     }
 }
 
 export function fetchAllImages() {
     return function(dispatch) {
-        axios.get(FETCH_ALL_IMAGES_URI)
-            .then(response => {
-                dispatch({type:ALL_IMAGES_DATA, payload: response.data })
-            })
+        dispatchAllImagesData(dispatch);
     }
 }
 
@@ -56,4 +54,11 @@ export function userButtonClicked(createdBy) {
         type: USER_PINS,
         payload: createdBy
     }
+}
+
+function dispatchAllImagesData(dispatch) {
+     axios.get(FETCH_ALL_IMAGES_URI)
+        .then(response => {
+            dispatch({type:ALL_IMAGES_DATA, payload: response.data })
+        })
 }
