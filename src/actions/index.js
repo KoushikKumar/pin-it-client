@@ -1,7 +1,7 @@
 import { GENERATE_TOKEN_URI, GET_OAUTH_TOKEN, FETCH_ALL_IMAGES_URI } from './uris';
 import axios from 'axios';
 import { PIN_IT_TOKEN_KEY } from '../constants/pin-it-constants';
-import { IS_USER_AUTHENTICATED, ALL_IMAGES_DATA } from './types';
+import { IS_USER_AUTHENTICATED, ALL_IMAGES_DATA, USER_DATA } from './types';
 
 export function logIn() {
     return function(dispatch) {
@@ -9,20 +9,22 @@ export function logIn() {
         axios.get(GET_OAUTH_TOKEN)
             .then(response => {
                 dispatch({ type:IS_USER_AUTHENTICATED, payload:true });
+                dispatch({ type:USER_DATA, payload: response.data });
                 localStorage.setItem(PIN_IT_TOKEN_KEY,JSON.stringify(response.data));
             })
             .catch(() => {
                 localStorage.removeItem(PIN_IT_TOKEN_KEY);
                 dispatch({ type:IS_USER_AUTHENTICATED, payload:false });
+                dispatch({ type:USER_DATA, payload: null });
             })
     }
 }
 
 export function logOut() {
-    localStorage.removeItem(PIN_IT_TOKEN_KEY);
-    return {
-        type:IS_USER_AUTHENTICATED,
-        payload:false
+    return function(dispatch) {
+        localStorage.removeItem(PIN_IT_TOKEN_KEY);
+        dispatch({ type:IS_USER_AUTHENTICATED, payload:false });
+        dispatch({ type:USER_DATA, payload: null });
     }
 }
 

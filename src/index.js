@@ -9,7 +9,7 @@ import App from './components/app';
 import reducers from './reducers';
 import { PIN_IT_TOKEN_KEY, OAUTH_TOKEN, OAUTH_TOKEN_SECRET, IS_AUTHORIZED } from './constants/pin-it-constants';
 import { TEST_AUTHORIZATION_URI } from './actions/uris';
-import { IS_USER_AUTHENTICATED } from './actions/types';
+import { IS_USER_AUTHENTICATED, USER_DATA } from './actions/types';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);
@@ -20,11 +20,13 @@ if(tokenData) {
        .then(response => {
          if(response.data[IS_AUTHORIZED]) {
            store.dispatch({type:IS_USER_AUTHENTICATED, payload:true})
+           store.dispatch({ type:USER_DATA, payload: tokenData });
          }
          renderDOM();
        }).catch(() => {
          localStorage.removeItem(PIN_IT_TOKEN_KEY);
          store.dispatch({ type:IS_USER_AUTHENTICATED, payload:false });
+         store.dispatch({ type:USER_DATA, payload: null });
          renderDOM();
        })
 } else {

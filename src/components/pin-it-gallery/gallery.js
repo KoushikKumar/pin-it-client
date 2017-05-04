@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import StackGrid from "react-stack-grid";
 
 import { fetchAllImages } from '../../actions';
+import PinItImage from './pin-it-image';
 
 class Gallery extends Component {
 
@@ -13,11 +14,7 @@ class Gallery extends Component {
     renderImages() {
         return this.props.imagesData.map((imageData, index) => {
             return (
-                <div className="pinit-pic-container" key={index}>
-                    <div className="pinit-pic-inner-container">
-                        <img className="pinit-pic" src={imageData.imageUrl} />
-                    </div>
-                </div>
+                <PinItImage imageData={imageData} key={index}/>
             );
         })
     }
