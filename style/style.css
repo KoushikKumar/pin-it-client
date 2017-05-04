@@ -45,6 +45,10 @@
     align-items: center;
 }
 
+.my-pin-button-text {
+    cursor: pointer;
+}
+
 .saved-pins-container {
     width: 50%;
     height: 10vh;
@@ -188,38 +192,6 @@
     filter: brightness(50%);
 }
 
-.pic-hover-header-container {
-    position: absolute;
-    width: 100%;
-    height:9vh;
-    align-self: flex-start;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.delete-pic-container {
-    width: 30%;
-    height: 5vh;
-    align-self: flex-end;
-}
-
-.delete-pic {
-    width: 90%;
-    height: 4vh;
-    background-color: #e52227;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family : Brush Script MT;
-    font-size: 2.7vh;
-}
-
-.delete-pin-text-left {
-    color: white;
-}
-
 .pic-hover-footer-container {
     position: absolute;
     width: 100%;
@@ -245,7 +217,7 @@
 }
 
 .save-pin {
-    width: 80%;
+    width: 90%;
     height: 4vh;
     background-color: #e52227;
     border-radius: 20px;

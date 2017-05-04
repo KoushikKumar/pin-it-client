@@ -13,7 +13,6 @@ class PitItImage  extends Component {
             return (
                 <div className="pinit-hovered-container">
                     {this.renderHoveredImage()}
-                    {this.renderHoveredHeader()}
                     {this.renderHoveredFooter()}
                 </div>
             )
@@ -34,25 +33,11 @@ class PitItImage  extends Component {
         );
     }
 
-    renderHoveredHeader() {
-        if(this.props.isUserAuthenticated && this.props.imageData.createdBy === this.props.userData.user_name) {
-            return (
-                <div className="pic-hover-header-container">
-                    <div className="delete-pic-container">
-                        <div className="delete-pic">
-                            <span className="delete-pin-text-left">Delete</span><span>It</span>
-                        </div>
-                    </div>
-                </div>
-            );
-        }
-    }
-
     renderHoveredFooter() {
         return (
             <div className="pic-hover-footer-container">
                 {this.renderUser()}
-                {this.renderPinItButton()}
+                {this.renderFooterButton()}
             </div>
         );
     }
@@ -65,8 +50,17 @@ class PitItImage  extends Component {
         );
     }
 
-    renderPinItButton() {
-        if(this.props.isUserAuthenticated && this.props.imageData.createdBy !== this.props.userData.user_name) {
+    renderFooterButton() {
+        if(this.props.isUserAuthenticated) {
+            if(this.props.imageData.createdBy === this.props.userData.user_name) {
+                return (
+                    <div className="save-pin-container">
+                        <div className="save-pin">
+                            <span className="save-pin-text-left">Delete</span><span>It</span>
+                        </div>
+                    </div>
+                );
+            } 
             if(this.props.imageData.pinnedBy.indexOf(this.props.userData.user_name) < 0) {
                 return (
                     <div className="save-pin-container">
@@ -75,7 +69,7 @@ class PitItImage  extends Component {
                         </div>
                     </div>
                 );
-            }
+            } 
             return (
                 <div className="save-pin-container">
                     <div className="save-pin">
