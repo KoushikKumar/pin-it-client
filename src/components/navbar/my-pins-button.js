@@ -5,7 +5,7 @@ import { myPinsButtonClicked } from '../../actions';
 
 class MyPinButton extends Component {
 
-    handleMyButton() {
+    handleMyPinsButton() {
         this.props.myPinsButtonClicked(this.props.userData.user_name);
     }
 
@@ -13,7 +13,7 @@ class MyPinButton extends Component {
         return (
             <div className="my-pins-container">
                 <div className="pinit-button my-pins-button">
-                    <span onClick = {() => {this.handleMyButton()}} className="my-pin-button-text">
+                    <span onClick = {() => {this.handleMyPinsButton()}} className="my-pin-button-text">
                         <span className="pinit-button-text-left">My</span><span>Pins</span>
                     </span>
                 </div>

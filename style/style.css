@@ -67,6 +67,10 @@
     align-items: center;
 }
 
+.saved-pins-button-text {
+    cursor: pointer;
+}
+
 .logo-container {
     width: 10%;
     height:15vh;
