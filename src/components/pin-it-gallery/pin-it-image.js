@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import PinItImageOwner from './pin-it-image-owner';
+
 class PitItImage  extends Component {
 
     constructor(props) {
@@ -43,11 +45,7 @@ class PitItImage  extends Component {
     }
 
     renderUser() {
-        return (
-            <div className="pic-user">
-                {this.props.imageData.createdBy}
-            </div>
-        );
+        return <PinItImageOwner imageData={this.props.imageData} />
     }
 
     renderFooterButton() {

@@ -1,7 +1,7 @@
 import { GENERATE_TOKEN_URI, GET_OAUTH_TOKEN, FETCH_ALL_IMAGES_URI } from './uris';
 import axios from 'axios';
 import { PIN_IT_TOKEN_KEY } from '../constants/pin-it-constants';
-import { IS_USER_AUTHENTICATED, ALL_IMAGES_DATA, USER_DATA, MY_PINS, SAVED_PINS } from './types';
+import { IS_USER_AUTHENTICATED, ALL_IMAGES_DATA, USER_DATA, MY_PINS, SAVED_PINS, USER_PINS } from './types';
 
 export function logIn() {
     return function(dispatch) {
@@ -48,5 +48,12 @@ export function savedPinsButtonClicked(userName) {
     return {
         type: SAVED_PINS,
         payload: userName
+    }
+}
+
+export function userButtonClicked(createdBy) {
+    return {
+        type: USER_PINS,
+        payload: createdBy
     }
 }

@@ -14,7 +14,7 @@ class Gallery extends Component {
     renderImages() {
         return this.props.imagesData.map((imageData, index) => {
             return (
-                <PinItImage imageData={imageData} key={index}/>
+                <PinItImage imageData={imageData} key={Math.random()}/>
             );
         })
     }

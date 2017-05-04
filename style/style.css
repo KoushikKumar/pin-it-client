@@ -214,6 +214,11 @@
     font-family : Gabriola;
 }
 
+.pic-user:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .save-pin-container {
     width: 30%;
     height: 5vh;

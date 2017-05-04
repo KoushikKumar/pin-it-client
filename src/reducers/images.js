@@ -1,4 +1,4 @@
-import { ALL_IMAGES_DATA, MY_PINS, SAVED_PINS } from '../actions/types';
+import { ALL_IMAGES_DATA, MY_PINS, SAVED_PINS, USER_PINS } from '../actions/types';
 
 export default function(state={imagesData:[], allImagesData:[]}, action) {
     let  { allImagesData } = state;
@@ -19,6 +19,13 @@ export default function(state={imagesData:[], allImagesData:[]}, action) {
                 return image["pinnedBy"].indexOf(userName_savedPins) > -1;
             })
             return {...state, imagesData:updatedImagesData_savedPins}
+        
+        case USER_PINS:
+            const createdByUser = action.payload;
+            let updatedImagesData_userPins = allImagesData.filter((image) => {
+                return image["createdBy"] === createdByUser;
+            })
+            return {...state, imagesData:updatedImagesData_userPins}
     }
     return state;
 }
