@@ -84,6 +84,7 @@
 .logo-image {
     width: 100%;
     height:15vh;
+    cursor: pointer;
 }
 
 .add-pin-and-auth-button-container {
