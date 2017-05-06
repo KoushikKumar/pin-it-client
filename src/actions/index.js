@@ -80,16 +80,14 @@ function dispatchAllImagesData(dispatch) {
 }
 
 export function deleteImage(imageId) {
-    //TODO LIKE BELOW
-    // const DELETE_URI = `${DELETE_IMAGE_BY_ID_URI}/${imageId}?${OAUTH_TOKEN}=${tokenData[OAUTH_TOKEN]}&${OAUTH_TOKEN_SECRET}=${tokenData[OAUTH_TOKEN_SECRET]}`;
-    // const tokenData = JSON.parse(localStorage.getItem(PIN_IT_TOKEN_KEY));
-    // return function(dispatch) {
-    //     axios.delete(DELETE_URI)
-    //             .then(response => {
-    //                 dispatch({type:DELETE_IMAGE, payload:imageId})
-    //             });
-    // }
-    return {type:DELETE_IMAGE, payload:imageId}
+    const tokenData = JSON.parse(localStorage.getItem(PIN_IT_TOKEN_KEY));
+    const DELETE_URI = `${DELETE_IMAGE_BY_ID_URI}/${imageId}?${OAUTH_TOKEN}=${tokenData[OAUTH_TOKEN]}&${OAUTH_TOKEN_SECRET}=${tokenData[OAUTH_TOKEN_SECRET]}`;
+    return function(dispatch) {
+        axios.delete(DELETE_URI)
+                .then(response => {
+                    dispatch({type:DELETE_IMAGE, payload:imageId})
+                });
+    }
 }
 
 export function saveImage(imageId, userName) {
