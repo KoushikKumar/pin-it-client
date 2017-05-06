@@ -2,7 +2,8 @@ import { ALL_IMAGES_DATA,
          MY_PINS, 
          SAVED_PINS, 
          USER_PINS, 
-         DELETE_IMAGE } from '../actions/types';
+         DELETE_IMAGE,
+         SAVE_IMAGE } from '../actions/types';
 
 export default function(state={imagesData:[], allImagesData:[]}, action) {
     let  { allImagesData } = state;
@@ -40,6 +41,23 @@ export default function(state={imagesData:[], allImagesData:[]}, action) {
                 return image["_id"] !== action.payload;
             })
             return {...state, imagesData:updatedImagesData_deletePin, allImagesData:updatedAllImagesData_deletePin}
+
+        case SAVE_IMAGE:
+            let updatedAllImagesData_saveImage = state.allImagesData.map((image) => {
+                if(image["_id"] == action.payload.imageId) {
+                    image["pinnedBy"] = [...image["pinnedBy"], action.payload.userName]
+                }
+                return image;
+            });
+
+            let updatedImagesData_saveImage = state.imagesData.map((image) => {
+                if(image["_id"] == action.payload.imageId) {
+                    image["pinnedBy"] = [...image["pinnedBy"], action.payload.userName]
+                }
+                return image;
+            });
+
+            return {...state, imagesData:updatedImagesData_saveImage, allImagesData:updatedAllImagesData_saveImage}
     }
     return state;
 }
