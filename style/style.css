@@ -218,14 +218,14 @@
     text-decoration: underline;
 }
 
-.save-pin-container, .delete-pin-container {
+.save-pin-container, .delete-pin-container,.unsave-pin-container {
     width: 30%;
     height: 5vh;
     display: flex;
     justify-content: center;
 }
 
-.save-pin, .delete-pin {
+.save-pin, .delete-pin, .unsave-pin {
     width: 90%;
     height: 4vh;
     background-color: #e52227;
@@ -237,6 +237,6 @@
     font-size: 2.7vh;
 }
 
-.save-pin-text-left, .delete-pin-text-left {
+.save-pin-text-left, .delete-pin-text-left, .unsave-pin-text-left {
     color: white;
 }

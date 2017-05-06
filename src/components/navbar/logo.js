@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchAllImages } from '../../actions';
+import { fetchAllImages, tab } from '../../actions';
+import { VIEW_ALL_TAB } from '../../constants/pin-it-constants';
 
 class Logo extends Component {
 
+    componentWillMount() {
+        this.props.tab(VIEW_ALL_TAB);
+    }
+
     handleOnClickLogo() {
         this.props.fetchAllImages();
+        this.props.tab(VIEW_ALL_TAB);
     }
 
     render() {
@@ -20,4 +26,4 @@ class Logo extends Component {
     }
 }
 
-export default connect(null, { fetchAllImages })(Logo)
+export default connect(null, { fetchAllImages, tab })(Logo)

@@ -3,7 +3,9 @@ import { ALL_IMAGES_DATA,
          SAVED_PINS, 
          USER_PINS, 
          DELETE_IMAGE,
-         SAVE_IMAGE } from '../actions/types';
+         SAVE_IMAGE,
+         UNSAVE_IMAGE } from '../actions/types';
+import { MY_PINS_TAB, SAVED_PINS_TAB, VIEW_ALL_TAB } from '../constants/pin-it-constants';
 
 export default function(state={imagesData:[], allImagesData:[]}, action) {
     let  { allImagesData } = state;
@@ -58,6 +60,35 @@ export default function(state={imagesData:[], allImagesData:[]}, action) {
             });
 
             return {...state, imagesData:updatedImagesData_saveImage, allImagesData:updatedAllImagesData_saveImage}
+
+        case UNSAVE_IMAGE:
+            let updatedAllImagesData_unsaveImage = state.allImagesData.map((image) => {
+                if(image["_id"] == action.payload.imageId) {
+                    image["pinnedBy"] = image["pinnedBy"].filter((user) => {
+                        return user!== action.payload.userName
+                    });
+                }
+                return image;
+            });
+
+            let updatedImagesData_unsaveImage = [];
+
+            if(SAVED_PINS_TAB !== action.payload.tabName) {
+                updatedImagesData_unsaveImage = state.imagesData.map((image) => {
+                    if(image["_id"] == action.payload.imageId) {
+                        image["pinnedBy"] = image["pinnedBy"].filter((user) => {
+                            return user!== action.payload.userName
+                        });
+                    }
+                    return image;
+                });
+            } else {
+                updatedImagesData_unsaveImage = state.imagesData.filter((image) => {
+                    return image["_id"] !== action.payload.imageId; 
+                });
+            }
+
+            return {...state, imagesData:updatedImagesData_unsaveImage, allImagesData:updatedAllImagesData_unsaveImage}
     }
     return state;
 }

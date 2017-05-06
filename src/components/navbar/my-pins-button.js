@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { myPinsButtonClicked } from '../../actions';
+import { myPinsButtonClicked, tab } from '../../actions';
+import { MY_PINS_TAB } from '../../constants/pin-it-constants';
 
 class MyPinButton extends Component {
-
+    
     handleMyPinsButton() {
         this.props.myPinsButtonClicked(this.props.userData.user_name);
+        this.props.tab(MY_PINS_TAB);
     }
 
     render() {
@@ -28,4 +30,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { myPinsButtonClicked })(MyPinButton)
+export default connect(mapStateToProps, { myPinsButtonClicked, tab })(MyPinButton)

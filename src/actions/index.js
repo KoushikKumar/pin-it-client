@@ -2,7 +2,8 @@ import { GENERATE_TOKEN_URI,
          GET_OAUTH_TOKEN, 
          FETCH_ALL_IMAGES_URI, 
          DELETE_IMAGE_BY_ID_URI,
-         SAVE_IMAGE_URI } from './uris';
+         SAVE_IMAGE_URI,
+         UNSAVE_IMAGE_URI } from './uris';
 import axios from 'axios';
 import { PIN_IT_TOKEN_KEY, OAUTH_TOKEN, OAUTH_TOKEN_SECRET } from '../constants/pin-it-constants';
 import { IS_USER_AUTHENTICATED, 
@@ -11,7 +12,9 @@ import { IS_USER_AUTHENTICATED,
          SAVED_PINS, 
          USER_PINS,
          DELETE_IMAGE,
-         SAVE_IMAGE } from './types';
+         SAVE_IMAGE,
+         UNSAVE_IMAGE,
+         TAB_NAME } from './types';
 
 export function logIn() {
     return function(dispatch) {
@@ -95,4 +98,21 @@ export function saveImage(imageId, userName) {
     //         })
 
     return {type:SAVE_IMAGE, payload:{imageId, userName}};
+}
+
+export function unSaveImage(imageId, userName, tabName) {
+    //TODO LIKE BELOW
+    // axios.post(UNSAVE_IMAGE_URI, {imageId, userName})
+    //         .then(response => {
+    //             dispatch({type:UNSAVE_IMAGE, payload:{imageId, userName, tabName}})
+    //         })
+
+    return {type:UNSAVE_IMAGE, payload:{imageId, userName, tabName}};
+}
+
+export function tab(tabName) {
+    return {
+        type:TAB_NAME,
+        payload:tabName
+    }
 }

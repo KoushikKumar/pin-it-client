@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { savedPinsButtonClicked } from '../../actions';
+import { savedPinsButtonClicked, tab } from '../../actions';
+import { SAVED_PINS_TAB } from '../../constants/pin-it-constants';
 
 class SavedPinsButton extends Component {
 
     handleSavedPinsButton() {
         this.props.savedPinsButtonClicked(this.props.userData.user_name);
+        this.props.tab(SAVED_PINS_TAB);
     }
 
     render() {
@@ -28,4 +30,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { savedPinsButtonClicked })(SavedPinsButton)
+export default connect(mapStateToProps, { savedPinsButtonClicked, tab })(SavedPinsButton)

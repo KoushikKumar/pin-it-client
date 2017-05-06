@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PinItImageOwner from './pin-it-image-owner';
 import DeleteImage from './delete-image';
 import SaveImage from './save-image';
+import UnSaveImage from './un-save-image';
 
 class PitItImage  extends Component {
 
@@ -58,13 +59,7 @@ class PitItImage  extends Component {
             if(this.props.imageData.pinnedBy.indexOf(this.props.userData.user_name) < 0) {
                 return <SaveImage imageData={this.props.imageData}/>
             } 
-            return (
-                <div className="save-pin-container">
-                    <div className="save-pin">
-                        <span className="save-pin-text-left">Unpin</span><span>It</span>
-                    </div>
-                </div>
-            );
+            return <UnSaveImage imageData={this.props.imageData}/>
         }
     }
 
