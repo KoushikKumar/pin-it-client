@@ -6,5 +6,5 @@ export const FETCH_ALL_IMAGES_URI = "https://api.myjson.com/bins/pi6w5"; //TODO
 export const DELETE_IMAGE_BY_ID_URI = "";//TODO
 export const SAVE_IMAGE_URI="";//TODO
 export const UNSAVE_IMAGE_URI = "";//TODO
-export const ADD_IMAGE_URI = "";//TODO
+export const ADD_IMAGE_URI = `${PIN_IT_SERVER_URI}/add-pin`;
 export const BROKEN_IMAGE_URI = "http://res.cloudinary.com/koushik/image/upload/v1494097022/broken_image_vsj5ob.png";

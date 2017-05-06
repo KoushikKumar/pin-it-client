@@ -120,20 +120,12 @@ export function tab(tabName) {
 }
 
 export function addImageUrl(imageUrl, createdBy, tabName) {
-    //TODO LIKE BELOW
-    // axios.post(ADD_IMAGE_URI, {imageUrl, createdBy, pinnedBy:[]})
-    //         .then(response => {
-    //             dispatch({type:ADD_IMAGE, payload:response.data}) // send payloay as response since we need _id
-                                                                    // Also include tabName
-    //         }) 
-    return {
-        type:ADD_IMAGE,
-        payload: {
-            _id:Math.random().toString(),
-            imageUrl, 
-            createdBy,
-            pinnedBy:[],
-            tabName
-        }
+    const tokenData = JSON.parse(localStorage.getItem(PIN_IT_TOKEN_KEY));
+    const URI = `${ADD_IMAGE_URI}?${OAUTH_TOKEN}=${tokenData[OAUTH_TOKEN]}&${OAUTH_TOKEN_SECRET}=${tokenData[OAUTH_TOKEN_SECRET]}`;
+    return function(dispatch) {
+        axios.post(URI, {imageUrl, createdBy, pinnedBy:[]})
+            .then(response => {
+                dispatch({type:ADD_IMAGE, payload:{...response.data, tabName}})
+            })
     }
 }
