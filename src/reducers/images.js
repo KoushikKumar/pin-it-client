@@ -4,7 +4,8 @@ import { ALL_IMAGES_DATA,
          USER_PINS, 
          DELETE_IMAGE,
          SAVE_IMAGE,
-         UNSAVE_IMAGE } from '../actions/types';
+         UNSAVE_IMAGE,
+         ADD_IMAGE } from '../actions/types';
 import { MY_PINS_TAB, SAVED_PINS_TAB, VIEW_ALL_TAB } from '../constants/pin-it-constants';
 
 export default function(state={imagesData:[], allImagesData:[]}, action) {
@@ -89,6 +90,14 @@ export default function(state={imagesData:[], allImagesData:[]}, action) {
             }
 
             return {...state, imagesData:updatedImagesData_unsaveImage, allImagesData:updatedAllImagesData_unsaveImage}
+
+        case ADD_IMAGE:
+            let updatedAllImagesData_addImage = [action.payload, ...state.allImagesData];
+            let updatedImagesData_addImage = state.imagesData;
+            if(SAVED_PINS_TAB !== action.payload.tabName) {
+                updatedImagesData_addImage = [action.payload, ...updatedImagesData_addImage];
+            }
+            return {...state, imagesData:updatedImagesData_addImage, allImagesData:updatedAllImagesData_addImage}
     }
     return state;
 }

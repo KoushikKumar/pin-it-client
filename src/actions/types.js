@@ -8,3 +8,4 @@ export const DELETE_IMAGE = "delete_image";
 export const SAVE_IMAGE = "save_image";
 export const UNSAVE_IMAGE = "unsave_image";
 export const TAB_NAME = "tab_name";
+export const ADD_IMAGE = "add_image";

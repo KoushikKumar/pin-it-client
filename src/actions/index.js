@@ -3,7 +3,8 @@ import { GENERATE_TOKEN_URI,
          FETCH_ALL_IMAGES_URI, 
          DELETE_IMAGE_BY_ID_URI,
          SAVE_IMAGE_URI,
-         UNSAVE_IMAGE_URI } from './uris';
+         UNSAVE_IMAGE_URI,
+         ADD_IMAGE_URI } from './uris';
 import axios from 'axios';
 import { PIN_IT_TOKEN_KEY, OAUTH_TOKEN, OAUTH_TOKEN_SECRET } from '../constants/pin-it-constants';
 import { IS_USER_AUTHENTICATED, 
@@ -14,7 +15,8 @@ import { IS_USER_AUTHENTICATED,
          DELETE_IMAGE,
          SAVE_IMAGE,
          UNSAVE_IMAGE,
-         TAB_NAME } from './types';
+         TAB_NAME,
+         ADD_IMAGE } from './types';
 
 export function logIn() {
     return function(dispatch) {
@@ -114,5 +116,24 @@ export function tab(tabName) {
     return {
         type:TAB_NAME,
         payload:tabName
+    }
+}
+
+export function addImageUrl(imageUrl, createdBy, tabName) {
+    //TODO LIKE BELOW
+    // axios.post(ADD_IMAGE_URI, {imageUrl, createdBy, pinnedBy:[]})
+    //         .then(response => {
+    //             dispatch({type:ADD_IMAGE, payload:response.data}) // send payloay as response since we need _id
+                                                                    // Also include tabName
+    //         }) 
+    return {
+        type:ADD_IMAGE,
+        payload: {
+            _id:Math.random().toString(),
+            imageUrl, 
+            createdBy,
+            pinnedBy:[],
+            tabName
+        }
     }
 }
