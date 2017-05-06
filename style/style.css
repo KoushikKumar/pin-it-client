@@ -240,3 +240,15 @@
 .save-pin-text-left, .delete-pin-text-left, .unsave-pin-text-left {
     color: white;
 }
+
+.default-text {
+    font-family: Niagara Engraved;
+    color : #A8A1A5;
+    font-size: 8vw;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    position: absolute;
+    top: 20vh;
+}

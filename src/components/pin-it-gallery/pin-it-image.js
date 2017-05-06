@@ -5,6 +5,7 @@ import PinItImageOwner from './pin-it-image-owner';
 import DeleteImage from './delete-image';
 import SaveImage from './save-image';
 import UnSaveImage from './un-save-image';
+import { BROKEN_IMAGE_URI } from '../../actions/uris';
 
 class PitItImage  extends Component {
 
@@ -24,7 +25,7 @@ class PitItImage  extends Component {
         } else {
             return (
                 <div className="pinit-pic-inner-container">
-                    <img className="pinit-pic" src={this.props.imageData.imageUrl} />
+                    <img onError={(e) => {this.defaultImage(e)}} className="pinit-pic" src={this.props.imageData.imageUrl} />
                 </div>
             )
         }
@@ -33,9 +34,13 @@ class PitItImage  extends Component {
     renderHoveredImage() {
         return (
             <div className="pinit-pic-inner-container">
-                <img className="pinit-hovered-pic" src={this.props.imageData.imageUrl} />
+                <img onError={(e) => {this.defaultImage(e)}} className="pinit-hovered-pic" src={this.props.imageData.imageUrl} />
             </div>
         );
+    }
+
+    defaultImage(e) {
+        e.target.src = BROKEN_IMAGE_URI;
     }
 
     renderHoveredFooter() {

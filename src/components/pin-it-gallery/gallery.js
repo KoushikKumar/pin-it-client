@@ -21,6 +21,9 @@ class Gallery extends Component {
 
 
     render() {
+        if(!this.props.imagesData.length) {
+            return <div className="default-text">No Pins To Display</div>
+        }
         return (
             <StackGrid
                 className="container stack-grid-container"

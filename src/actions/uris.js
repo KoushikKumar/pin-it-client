@@ -7,3 +7,4 @@ export const DELETE_IMAGE_BY_ID_URI = "";//TODO
 export const SAVE_IMAGE_URI="";//TODO
 export const UNSAVE_IMAGE_URI = "";//TODO
 export const ADD_IMAGE_URI = "";//TODO
+export const BROKEN_IMAGE_URI = "http://res.cloudinary.com/koushik/image/upload/v1494097022/broken_image_vsj5ob.png";
