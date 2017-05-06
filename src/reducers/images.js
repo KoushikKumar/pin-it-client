@@ -1,4 +1,8 @@
-import { ALL_IMAGES_DATA, MY_PINS, SAVED_PINS, USER_PINS } from '../actions/types';
+import { ALL_IMAGES_DATA, 
+         MY_PINS, 
+         SAVED_PINS, 
+         USER_PINS, 
+         DELETE_IMAGE } from '../actions/types';
 
 export default function(state={imagesData:[], allImagesData:[]}, action) {
     let  { allImagesData } = state;
@@ -26,6 +30,16 @@ export default function(state={imagesData:[], allImagesData:[]}, action) {
                 return image["createdBy"] === createdByUser;
             })
             return {...state, imagesData:updatedImagesData_userPins}
+
+        case DELETE_IMAGE:
+            let updatedAllImagesData_deletePin = state.allImagesData.filter((image) => {
+                return image["_id"] !== action.payload;
+            })
+
+            let updatedImagesData_deletePin = state.imagesData.filter((image) => {
+                return image["_id"] !== action.payload;
+            })
+            return {...state, imagesData:updatedImagesData_deletePin, allImagesData:updatedAllImagesData_deletePin}
     }
     return state;
 }

@@ -214,19 +214,18 @@
     font-family : Gabriola;
 }
 
-.pic-user:hover {
+.pic-user-text:hover {
     text-decoration: underline;
-    cursor: pointer;
 }
 
-.save-pin-container {
+.save-pin-container, .delete-pin-container {
     width: 30%;
     height: 5vh;
     display: flex;
     justify-content: center;
 }
 
-.save-pin {
+.save-pin, .delete-pin {
     width: 90%;
     height: 4vh;
     background-color: #e52227;
@@ -238,6 +237,6 @@
     font-size: 2.7vh;
 }
 
-.save-pin-text-left {
+.save-pin-text-left, .delete-pin-text-left {
     color: white;
 }

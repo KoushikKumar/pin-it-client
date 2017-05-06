@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import PinItImageOwner from './pin-it-image-owner';
+import DeleteImage from './delete-image';
 
 class PitItImage  extends Component {
 
@@ -51,13 +52,7 @@ class PitItImage  extends Component {
     renderFooterButton() {
         if(this.props.isUserAuthenticated) {
             if(this.props.imageData.createdBy === this.props.userData.user_name) {
-                return (
-                    <div className="save-pin-container">
-                        <div className="save-pin">
-                            <span className="save-pin-text-left">Delete</span><span>It</span>
-                        </div>
-                    </div>
-                );
+                return <DeleteImage imageData={this.props.imageData}/>
             } 
             if(this.props.imageData.pinnedBy.indexOf(this.props.userData.user_name) < 0) {
                 return (

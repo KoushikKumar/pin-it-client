@@ -4,3 +4,4 @@ export const USER_DATA = "user_data";
 export const MY_PINS = "my_pins";
 export const SAVED_PINS = "saved_pins";
 export const USER_PINS = "user_pins";
+export const DELETE_IMAGE = "delete_image";

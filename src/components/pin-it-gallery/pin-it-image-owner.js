@@ -11,8 +11,10 @@ class PinItImageOwner extends Component {
 
     render() {
         return (
-            <div onClick={() => {this.handleUserButton()}} className="pic-user">
-                {this.props.imageData.createdBy}
+            <div className="pic-user">
+                <span onClick={() => {this.handleUserButton()}} className="my-pin-button-text pic-user-text">
+                    {this.props.imageData.createdBy}
+                </span>
             </div>
         );
     }

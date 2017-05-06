@@ -1,7 +1,15 @@
-import { GENERATE_TOKEN_URI, GET_OAUTH_TOKEN, FETCH_ALL_IMAGES_URI } from './uris';
+import { GENERATE_TOKEN_URI, 
+         GET_OAUTH_TOKEN, 
+         FETCH_ALL_IMAGES_URI, 
+         DELETE_IMAGE_BY_ID_URI } from './uris';
 import axios from 'axios';
-import { PIN_IT_TOKEN_KEY } from '../constants/pin-it-constants';
-import { IS_USER_AUTHENTICATED, ALL_IMAGES_DATA, USER_DATA, MY_PINS, SAVED_PINS, USER_PINS } from './types';
+import { PIN_IT_TOKEN_KEY, OAUTH_TOKEN, OAUTH_TOKEN_SECRET } from '../constants/pin-it-constants';
+import { IS_USER_AUTHENTICATED, 
+         ALL_IMAGES_DATA, 
+         USER_DATA, MY_PINS, 
+         SAVED_PINS, 
+         USER_PINS,
+         DELETE_IMAGE } from './types';
 
 export function logIn() {
     return function(dispatch) {
@@ -11,6 +19,7 @@ export function logIn() {
                 dispatch({ type:IS_USER_AUTHENTICATED, payload:true });
                 dispatch({ type:USER_DATA, payload: response.data });
                 localStorage.setItem(PIN_IT_TOKEN_KEY,JSON.stringify(response.data));
+                dispatchAllImagesData(dispatch);
             })
             .catch(() => {
                 localStorage.removeItem(PIN_IT_TOKEN_KEY);
@@ -61,4 +70,17 @@ function dispatchAllImagesData(dispatch) {
         .then(response => {
             dispatch({type:ALL_IMAGES_DATA, payload: response.data })
         })
+}
+
+export function deleteImage(imageId) {
+    //TODO LIKE BELOW
+    // const DELETE_URI = `${DELETE_IMAGE_BY_ID_URI}/${imageId}?${OAUTH_TOKEN}=${tokenData[OAUTH_TOKEN]}&${OAUTH_TOKEN_SECRET}=${tokenData[OAUTH_TOKEN_SECRET]}`;
+    // const tokenData = JSON.parse(localStorage.getItem(PIN_IT_TOKEN_KEY));
+    // return function(dispatch) {
+    //     axios.delete(DELETE_URI)
+    //             .then(response => {
+    //                 dispatch({type:DELETE_IMAGE, payload:imageId})
+    //             });
+    // }
+    return {type:DELETE_IMAGE, payload:imageId}
 }
