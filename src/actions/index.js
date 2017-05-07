@@ -83,31 +83,30 @@ export function deleteImage(imageId) {
     const tokenData = JSON.parse(localStorage.getItem(PIN_IT_TOKEN_KEY));
     const DELETE_URI = `${DELETE_IMAGE_BY_ID_URI}/${imageId}?${OAUTH_TOKEN}=${tokenData[OAUTH_TOKEN]}&${OAUTH_TOKEN_SECRET}=${tokenData[OAUTH_TOKEN_SECRET]}`;
     return function(dispatch) {
+        dispatch({type:DELETE_IMAGE, payload:imageId});
         axios.delete(DELETE_URI)
-                .then(response => {
-                    dispatch({type:DELETE_IMAGE, payload:imageId})
-                });
+                .then(response => {});
     }
 }
 
 export function saveImage(imageId, userName) {
-    //TODO LIKE BELOW
-    // axios.post(SAVE_IMAGE_URI, {imageId, userName})
-    //         .then(response => {
-    //             dispatch({type:SAVE_IMAGE, payload:{imageId, userName}})
-    //         })
-
-    return {type:SAVE_IMAGE, payload:{imageId, userName}};
+    const tokenData = JSON.parse(localStorage.getItem(PIN_IT_TOKEN_KEY));
+    const SAVE_URI = `${SAVE_IMAGE_URI}?${OAUTH_TOKEN}=${tokenData[OAUTH_TOKEN]}&${OAUTH_TOKEN_SECRET}=${tokenData[OAUTH_TOKEN_SECRET]}`
+    return function(dispatch) {
+        dispatch({type:SAVE_IMAGE, payload:{imageId, userName}})
+        axios.post(SAVE_URI, {imageId, userName})
+            .then(response => {})
+    }
 }
 
 export function unSaveImage(imageId, userName, tabName) {
-    //TODO LIKE BELOW
-    // axios.post(UNSAVE_IMAGE_URI, {imageId, userName})
-    //         .then(response => {
-    //             dispatch({type:UNSAVE_IMAGE, payload:{imageId, userName, tabName}})
-    //         })
-
-    return {type:UNSAVE_IMAGE, payload:{imageId, userName, tabName}};
+    const tokenData = JSON.parse(localStorage.getItem(PIN_IT_TOKEN_KEY));
+    const UNSAVE_URI = `${UNSAVE_IMAGE_URI}?${OAUTH_TOKEN}=${tokenData[OAUTH_TOKEN]}&${OAUTH_TOKEN_SECRET}=${tokenData[OAUTH_TOKEN_SECRET]}`
+    return function(dispatch) {
+        dispatch({type:UNSAVE_IMAGE, payload:{imageId, userName, tabName}})
+        axios.post(UNSAVE_URI, {imageId, userName})
+                .then(response => {})
+    }
 }
 
 export function tab(tabName) {

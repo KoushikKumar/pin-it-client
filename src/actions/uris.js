@@ -1,10 +1,10 @@
-export const PIN_IT_SERVER_URI = "https://pin-it-server-koushikkumarv.c9users.io";
+export const PIN_IT_SERVER_URI = "https://pin-it-server-kkv.herokuapp.com";
 export const TEST_AUTHORIZATION_URI = `${PIN_IT_SERVER_URI}/test-authorization`;
 export const GENERATE_TOKEN_URI = `${PIN_IT_SERVER_URI}/generate-token`;
 export const GET_OAUTH_TOKEN = `${PIN_IT_SERVER_URI}/get-oauth-token`;
 export const FETCH_ALL_IMAGES_URI = `${PIN_IT_SERVER_URI}/fetch-all-pins`;
 export const DELETE_IMAGE_BY_ID_URI = `${PIN_IT_SERVER_URI}/delete/pin`;
-export const SAVE_IMAGE_URI="";//TODO
-export const UNSAVE_IMAGE_URI = "";//TODO
+export const SAVE_IMAGE_URI=`${PIN_IT_SERVER_URI}/save/pin`;
+export const UNSAVE_IMAGE_URI = `${PIN_IT_SERVER_URI}/unsave/pin`;
 export const ADD_IMAGE_URI = `${PIN_IT_SERVER_URI}/add-pin`;
 export const BROKEN_IMAGE_URI = "http://res.cloudinary.com/koushik/image/upload/v1494097022/broken_image_vsj5ob.png";
